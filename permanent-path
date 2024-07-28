@@ -1,0 +1,11 @@
+#!/bin/bash
+path_to_add="$*"
+defaultShell="$(basename "$SHELL")"
+
+if [ ! -d $path_to_add ]; then
+	printf "$path_to_add was not found or is not a directory"
+	exit 0
+fi
+
+echo "export PATH=\"$path_to_add:\$PATH\"" >> "$HOME/.${defaultShell}rc"
+echo "Added $path_to_add to PATH"
